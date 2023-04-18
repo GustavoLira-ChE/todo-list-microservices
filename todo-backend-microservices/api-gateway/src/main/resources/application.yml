@@ -11,3 +11,24 @@ eureka:
 spring:
   application:
     name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: project-app
+          uri: http://localhost:8100/
+          predicates:
+            - Path=/api/project/**
+          filters:
+            - StripPrefix=2
+        - id: user-app
+          uri: http://localhost:8101/
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=2
+        - id: task-app
+          uri: http://localhost:8102/
+          predicates:
+            - Path=/api/task/**
+          filters:
+            - StripPrefix=2
