@@ -18,13 +18,14 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userId;
+    @Column(name = "user_id")
+    private int user_id;
     @Column(name = "user_name")
-    private String name;
-    @Column(unique = true)
-    private String email;
+    private String user_name;
+    @Column(name = "user_email",unique = true)
+    private String user_email;
     @Column(name = "user_password")
-    private String password;
+    private String user_password;
     @Column(name = "user_role")
-    private String role;
+    private String user_role;
 }
