@@ -1,7 +1,7 @@
 eureka:
-  client:
+  client: 
     service-url:
-      default-zone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka
 
 spring:
   application:
@@ -15,7 +15,7 @@ spring:
     generate-ddl: true
     show-sql: true
     defer-datasource-initialization: true
-  sql: 
+  sql:
     init:
       mode: always
 
