@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.todolist.userservice.model.UserEntity;
+import com.todolist.userservice.model.feign.ProjectModel;
 import com.todolist.userservice.service.UserService;
 
 @RestController
@@ -60,6 +61,16 @@ public class UserController {
             return ResponseEntity.ok(true);
         } else {
             return new ResponseEntity<Boolean>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/id/{id}")
+    public ResponseEntity<ProjectModel> saveProject(@PathVariable(name = "id") int userId, @RequestBody ProjectModel project){
+        try {
+            ProjectModel newProject = this.userService.saveProject(userId, project);
+            return ResponseEntity.ok(newProject);
+        } catch (Exception e){
+            return new ResponseEntity<ProjectModel>(project, HttpStatus.NOT_ACCEPTABLE);
         }
     }
 }

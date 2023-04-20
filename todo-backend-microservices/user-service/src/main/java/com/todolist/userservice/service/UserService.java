@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.todolist.userservice.model.UserEntity;
+import com.todolist.userservice.model.feign.ProjectModel;
 
 public interface UserService {
 
@@ -11,5 +12,6 @@ public interface UserService {
     Optional<UserEntity> findById(int userId);
     UserEntity save(UserEntity user);
     void deleteById(int userId);
-
+    ProjectModel saveProject(int userId, ProjectModel project);
+    
 }
