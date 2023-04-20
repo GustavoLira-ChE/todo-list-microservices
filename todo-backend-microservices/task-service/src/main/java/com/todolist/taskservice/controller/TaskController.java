@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,6 +56,16 @@ public class TaskController {
             return ResponseEntity.ok(newTask);
         } catch(Exception e){
             return new ResponseEntity<TaskEntity>(HttpStatus.NOT_ACCEPTABLE);
+        }
+    }
+
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable(name = "id") int taskId){
+        if(this.taskService.findById(taskId).isPresent()){
+            this.taskService.deleteById(taskId);
+            return ResponseEntity.ok(true);
+        } else {
+            return new ResponseEntity<Boolean>(false, HttpStatus.NOT_ACCEPTABLE);
         }
     }
 }
