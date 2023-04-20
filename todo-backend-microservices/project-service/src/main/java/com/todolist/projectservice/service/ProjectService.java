@@ -11,4 +11,5 @@ public interface ProjectService {
     Optional<ProjectEntity> findById(int porjectId);
     ProjectEntity save(ProjectEntity project);
     void deleteById(int projectId);
+    List<ProjectEntity> findAllByUser_id(int userId);
 }

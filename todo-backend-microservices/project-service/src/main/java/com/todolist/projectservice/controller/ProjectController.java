@@ -69,4 +69,14 @@ public class ProjectController {
         }
     }
 
+    @GetMapping("/user-id/{id}")
+    public ResponseEntity<List<ProjectEntity>> findByUser_id(@PathVariable(name = "id") int userId){
+        Optional<List<ProjectEntity>> projects = Optional.of(this.projectService.findAllByUser_id(userId));
+        if(projects.isPresent()){
+            return ResponseEntity.ok(projects.get());
+        } else {
+            return new ResponseEntity<List<ProjectEntity>>(HttpStatus.NO_CONTENT);
+        }
+    }
+
 }

@@ -42,4 +42,9 @@ public class ProjectServiceImplementation implements ProjectService{
         } 
     }
 
+    @Override
+    public List<ProjectEntity> findAllByUser_id(int userId) {
+        return this.projectRepo.findAllByUserId(userId);
+    }
+
 }
