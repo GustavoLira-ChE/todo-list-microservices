@@ -13,21 +13,24 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      discovery:
+        locator: 
+          enable: true
       routes:
         - id: project-app
-          uri: http://localhost:8100/
+          uri: lb://project-app
           predicates:
             - Path=/api/project/**
           filters:
             - StripPrefix=2
         - id: user-app
-          uri: http://localhost:8101/
+          uri: lb://user-app
           predicates:
             - Path=/api/user/**
           filters:
             - StripPrefix=2
         - id: task-app
-          uri: http://localhost:8102/
+          uri: lb://task-app
           predicates:
             - Path=/api/task/**
           filters:
