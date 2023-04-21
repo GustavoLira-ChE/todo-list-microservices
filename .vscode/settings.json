@@ -1,0 +1,5 @@
+{
+    "java.project.sourcePaths": [
+        "todo-backend-microservices/config-server"
+    ]
+}
