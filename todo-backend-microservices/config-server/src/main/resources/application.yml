@@ -6,6 +6,6 @@ spring:
     config: 
       server:
         git: 
-          uri: https://github.com/GustavoLira-ChE/todo-list-microservices/tree/config-server/todo-backend-microservices/config-data
+          uri: file://wsl.localhost/Ubuntu-20.04/home/gustavolira/tcsTraining/cs4-react-spring-microservices/todo-backend-microservices/config-data
   application:
     name: config-server
