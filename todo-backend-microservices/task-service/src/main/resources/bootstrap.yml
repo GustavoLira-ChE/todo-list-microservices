@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: task-app
+  cloud: 
+    config: 
+      enable: true
+      uri: http://localhost:8089
+
