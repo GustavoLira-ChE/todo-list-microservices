@@ -3,6 +3,6 @@ spring:
     name: user-app
   cloud: 
     config: 
-      enable: true
+      enabled: true
       uri: http://localhost:8089
 
