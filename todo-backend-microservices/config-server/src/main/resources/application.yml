@@ -6,8 +6,6 @@ spring:
     config: 
       server:
         git: 
-          default-label: config-server
-          uri: https://github.com/GustavoLira-ChE/todo-list-microservices/tree/config-server
-          search-paths: todo-backend-microservices/config-data
+          uri: https://github.com/GustavoLira-ChE/todo-list-microservices/tree/config-server/todo-backend-microservices/config-data
   application:
     name: config-server

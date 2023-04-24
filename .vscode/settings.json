@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
         "todo-backend-microservices/config-server"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
