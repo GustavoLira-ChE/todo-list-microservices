@@ -5,9 +5,9 @@ spring:
   cloud: 
     config: 
       server:
-        label: config-server
         git: 
-          default-label: config-server
           uri: https://github.com/GustavoLira-ChE/config-file
+          skip-ssl-validation: true
+          label: config-server
   application:
     name: config-server
