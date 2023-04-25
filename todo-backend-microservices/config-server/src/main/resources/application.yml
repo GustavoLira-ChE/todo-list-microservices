@@ -8,10 +8,6 @@ spring:
         label: config-server
         git: 
           default-label: config-server
-          uri: https://github.com/GustavoLira-ChE/todo-list-microservices
-          search-paths: todo-backend-microservices/config-data
-          skip-ssl-validation: true
-          timeout: 10
-          
+          uri: https://github.com/GustavoLira-ChE/config-file
   application:
     name: config-server
