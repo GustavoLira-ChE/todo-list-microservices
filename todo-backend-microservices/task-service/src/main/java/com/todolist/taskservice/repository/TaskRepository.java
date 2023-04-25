@@ -11,7 +11,7 @@ import com.todolist.taskservice.model.TaskEntity;
 @Repository
 public interface TaskRepository extends JpaRepository<TaskEntity,Integer> {
 
-    @Query(value = "select * from task where project_id = ?1", nativeQuery = true)
+    @Query(value = "select * from tasks where project_id = ?1", nativeQuery = true)
     public abstract List<TaskEntity> findAllByProjectId(int projectId);
     
 }
