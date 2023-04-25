@@ -40,5 +40,10 @@ public class TaskServiceImplementation implements TaskService {
             this.taskRepo.deleteById(taskId);
         }
     }
+
+    @Override
+    public List<TaskEntity> findAllByProjectId(int projectId) {
+        return this.taskRepo.findAllByProjectId(projectId);
+    }
     
 }

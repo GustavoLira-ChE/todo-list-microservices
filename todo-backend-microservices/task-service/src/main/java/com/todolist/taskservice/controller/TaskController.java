@@ -68,4 +68,14 @@ public class TaskController {
             return new ResponseEntity<Boolean>(false, HttpStatus.NOT_ACCEPTABLE);
         }
     }
+
+    @GetMapping("/project-id/{id}")
+    public ResponseEntity<List<TaskEntity>> findAllByProjectId(@PathVariable(name = "project-id") int projectId){
+        Optional<List<TaskEntity>> projectTasks = Optional.of(this.taskService.findAllByProjectId(projectId));
+        if(projectTasks.isPresent()){
+            return ResponseEntity.ok(projectTasks.get());
+        } else {
+            return new ResponseEntity<List<TaskEntity>>(HttpStatus.NO_CONTENT);
+        }
+    }
 }

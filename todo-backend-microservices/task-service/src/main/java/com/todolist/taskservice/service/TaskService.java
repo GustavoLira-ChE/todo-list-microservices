@@ -12,4 +12,5 @@ public interface TaskService {
     TaskEntity save(TaskEntity task);
     void deleteById(int taskId);
 
+    List<TaskEntity> findAllByProjectId(int projectId);
 }
