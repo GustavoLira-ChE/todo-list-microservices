@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.todolist.projectservice.model.ProjectEntity;
+import com.todolist.projectservice.model.feign.TaskModel;
 
 public interface ProjectService {
     
@@ -11,5 +12,8 @@ public interface ProjectService {
     Optional<ProjectEntity> findById(int porjectId);
     ProjectEntity save(ProjectEntity project);
     void deleteById(int projectId);
-    List<ProjectEntity> findAllByUser_id(int userId);
+    List<ProjectEntity> findAllByUserId(int userId);
+
+    TaskModel saveTask(int projectId,TaskModel task);
+    List<TaskModel> findAllTaskByProjectId(int projectId);
 }

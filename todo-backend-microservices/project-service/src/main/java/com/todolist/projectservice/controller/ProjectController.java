@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.todolist.projectservice.model.ProjectEntity;
+import com.todolist.projectservice.model.feign.TaskModel;
 import com.todolist.projectservice.service.ProjectService;
 
 @RestController
@@ -71,7 +72,7 @@ public class ProjectController {
 
     @GetMapping("/user-id/{id}")
     public ResponseEntity<List<ProjectEntity>> findByUser_id(@PathVariable(name = "id") int userId){
-        Optional<List<ProjectEntity>> projects = Optional.of(this.projectService.findAllByUser_id(userId));
+        Optional<List<ProjectEntity>> projects = Optional.of(this.projectService.findAllByUserId(userId));
         if(projects.isPresent()){
             return ResponseEntity.ok(projects.get());
         } else {
@@ -79,4 +80,23 @@ public class ProjectController {
         }
     }
 
+    @PostMapping("/id/{id}")
+    public ResponseEntity<TaskModel> saveTaskByProjectId(@PathVariable(name = "id") int projectId, @RequestBody TaskModel task) {
+        try{
+            TaskModel newTask = this.projectService.saveTask(projectId, task);
+            return ResponseEntity.ok(newTask);
+        } catch(Exception e) {
+            return new ResponseEntity<TaskModel>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/project-id/{id}/tasks")
+    public ResponseEntity<List<TaskModel>> findAllTaskByProjectId(@PathVariable(name = "id") int projectId){
+        Optional<List<TaskModel>> tasksByProjectId = Optional.of(this.projectService.findAllTaskByProjectId(projectId));
+        if(tasksByProjectId.isPresent()){
+            return ResponseEntity.ok(tasksByProjectId.get());
+        } else {
+            return new ResponseEntity<List<TaskModel>>(HttpStatus.NOT_FOUND);
+        }
+    } 
 }
