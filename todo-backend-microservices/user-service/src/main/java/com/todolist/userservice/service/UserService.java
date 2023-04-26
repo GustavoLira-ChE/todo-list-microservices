@@ -13,5 +13,6 @@ public interface UserService {
     UserEntity save(UserEntity user);
     void deleteById(int userId);
     ProjectModel saveProject(int userId, ProjectModel project);
+    List<ProjectModel> findProjectsByUserId(int userId);
     
 }

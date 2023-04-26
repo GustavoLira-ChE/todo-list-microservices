@@ -53,6 +53,16 @@ public class UserServiceImplementation implements UserService {
         ProjectModel newProject = this.projectFeign.save(project);
         return newProject;
     }
+
+    @Override
+    public List<ProjectModel> findProjectsByUserId(int userId) {
+        Optional<List<ProjectModel>> projectsByUserId = Optional.of(this.projectFeign.findByUser_id(userId));
+        if(projectsByUserId.isPresent()){
+            return projectsByUserId.get();
+        } else {
+            return null;
+        }
+    }
     
 }
 

@@ -73,4 +73,14 @@ public class UserController {
             return new ResponseEntity<ProjectModel>(project, HttpStatus.NOT_ACCEPTABLE);
         }
     }
+
+    @GetMapping("/id/{id}/projects")
+    public ResponseEntity<List<ProjectModel>> findProjectsByUserId(@PathVariable(name = "id") int userId){
+        try {
+            List<ProjectModel> projectsByUserId = this.userService.findProjectsByUserId(userId);
+            return new ResponseEntity<List<ProjectModel>>(projectsByUserId, HttpStatus.OK);
+        } catch(Exception e) {
+            return new ResponseEntity<List<ProjectModel>>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
