@@ -12,6 +12,8 @@ public interface UserService {
     Optional<UserEntity> findById(int userId);
     UserEntity save(UserEntity user);
     void deleteById(int userId);
+    Optional<UserEntity> findByUserEmail(String userEmail);
+
     ProjectModel saveProject(int userId, ProjectModel project);
     List<ProjectModel> findProjectsByUserId(int userId);
     

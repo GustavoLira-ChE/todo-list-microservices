@@ -64,6 +64,16 @@ public class UserController {
         }
     }
 
+    @GetMapping("/user-email/{email}")
+    public ResponseEntity<UserEntity> findUserByEmail(@PathVariable(name = "email") String userEmail){
+        Optional<UserEntity> userByEmail = this.userService.findByUserEmail(userEmail);
+        if(userByEmail.isPresent()){
+            return ResponseEntity.ok(userByEmail.get());
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/id/{id}")
     public ResponseEntity<ProjectModel> saveProject(@PathVariable(name = "id") int userId, @RequestBody ProjectModel project){
         try {

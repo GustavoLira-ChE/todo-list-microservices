@@ -48,6 +48,11 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
+    public Optional<UserEntity> findByUserEmail(String userEmail) {
+        return this.userRepo.findAllByUserId(userEmail);
+    }
+
+    @Override
     public ProjectModel saveProject(int userId, ProjectModel project){
         project.setUser_id(userId);
         ProjectModel newProject = this.projectFeign.save(project);
@@ -62,8 +67,7 @@ public class UserServiceImplementation implements UserService {
         } else {
             return null;
         }
-    }
-    
+    } 
 }
 
 
