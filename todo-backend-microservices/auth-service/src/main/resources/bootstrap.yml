@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: auth-service
+  cloud: 
+    config: 
+      enabled: true
+      uri: http://localhost:8888
+
+access:
+  token:
+    secret: MyAccessDataToken1234567890124567890
+    validity-seconds: 3600
