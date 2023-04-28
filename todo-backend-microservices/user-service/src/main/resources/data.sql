@@ -1,5 +1,5 @@
-INSERT INTO users (USER_NAME ,USER_EMAIL, USER_PASSWORD, USER_ROLE)  VALUES ('Gustavo Lira','gustavo@email.com','1234gus','ADMIN'); /*  VALUES ('gustavo@email.com','Gustavo','Lira','$2a$12$lLDG6ir1eRwdxLwR47YxPOdPHSsmQFIQdWujNnsmHd3/4l48JcE5e','ADMIN'); 1234gus */
-INSERT INTO users (USER_NAME ,USER_EMAIL, USER_PASSWORD, USER_ROLE) VALUES ('Adan Alvarez','adan@email.com','1234adan','ADMIN'); /* 1234adan */
-INSERT INTO users (USER_NAME ,USER_EMAIL, USER_PASSWORD, USER_ROLE) VALUES ('Andres Avalos','andres@email.com','1234andres','ADMIN'); /* 1234andres */
-INSERT INTO users (USER_NAME ,USER_EMAIL, USER_PASSWORD, USER_ROLE) VALUES ('Bryan Gongora','bryan@email.com','1234bryan','REGULAR'); /*  1234bryan */
-INSERT INTO users (USER_NAME ,USER_EMAIL, USER_PASSWORD, USER_ROLE) VALUES ('Ricardo Zapata','ricardo@email.com','1234ricardo','REGULAR'); /* 1234ricardo */
+INSERT INTO users (USER_NAME ,USER_EMAIL, USER_PASSWORD, USER_ROLE)  VALUES ('Gustavo Lira','gustavo@email.com','$2a$12$lLDG6ir1eRwdxLwR47YxPOdPHSsmQFIQdWujNnsmHd3/4l48JcE5e','ADMIN'); /* 1234gus */
+INSERT INTO users (USER_NAME ,USER_EMAIL, USER_PASSWORD, USER_ROLE) VALUES ('Adan Alvarez','adan@email.com','$2a$12$5t9x57mV.J4HskJnky5UBuwjZFTaG4YmA/pnLvuD9/xM.WFmc.Yta','ADMIN'); /* 1234adan */
+INSERT INTO users (USER_NAME ,USER_EMAIL, USER_PASSWORD, USER_ROLE) VALUES ('Andres Avalos','andres@email.com','$2a$12$DWt.gkXe8FgFUUlFg.wZ8ue.4g57FtN5LO/D6J.FukX9LFZs2Alze','ADMIN'); /* 1234andres */
+INSERT INTO users (USER_NAME ,USER_EMAIL, USER_PASSWORD, USER_ROLE) VALUES ('Bryan Gongora','bryan@email.com','$2a$12$pcf9p9nhZ/cbuSswlOb36ecABgyi50U1OUBXbf26gtQrhJyPCGNGe','REGULAR'); /*  1234bryan */
+INSERT INTO users (USER_NAME ,USER_EMAIL, USER_PASSWORD, USER_ROLE) VALUES ('Ricardo Zapata','ricardo@email.com','$2a$12$sM3288ZRJoKWNOqpjxxt7uU86K9J8UmukaGaRndTukMm7rDy18bRa','REGULAR'); /* 1234ricardo */
