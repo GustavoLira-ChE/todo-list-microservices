@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.todolist.authservice.dto.AuthCredentials;
 import com.todolist.authservice.dto.NewUserInfo;
+import com.todolist.authservice.dto.TokenDto;
 import com.todolist.authservice.dto.UserModel;
 import com.todolist.authservice.service.AuthService;
 
@@ -26,17 +27,17 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody AuthCredentials credentials) {
-        String token = authService.login(credentials);
-        if(token == null){
+    public ResponseEntity<TokenDto> login(@RequestBody AuthCredentials credentials) {
+        TokenDto token = authService.login(credentials);
+        if(token.getToken() == null){
             return ResponseEntity.badRequest().build();
         }
-        return new ResponseEntity<String>(token, HttpStatus.ACCEPTED);
+        return new ResponseEntity<TokenDto>(token, HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/validate")
-    public ResponseEntity<String> validate(@RequestParam String token) {
-        String validToken = this.authService.validateToken(token);
+    public ResponseEntity<TokenDto> validate(@RequestParam String token) {
+        TokenDto validToken = this.authService.validateToken(token);
         if(validToken == null){
             return ResponseEntity.badRequest().build();
         }

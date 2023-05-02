@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.todolist.authservice.dto.AuthCredentials;
 import com.todolist.authservice.dto.NewUserInfo;
+import com.todolist.authservice.dto.TokenDto;
 import com.todolist.authservice.dto.UserModel;
 import com.todolist.authservice.feignRepository.UserFeignService;
 import com.todolist.authservice.security.JwtProvider;
@@ -38,7 +39,7 @@ public class AuthService {
         return this.userFeign.saveNewUser(user);
     }
 
-    public String login(AuthCredentials credentials) {
+    public TokenDto login(AuthCredentials credentials) {
         Optional<UserModel> user = this.userFeign.findUserByEmail(credentials.getUser_email());
         if(!user.isPresent()){
             return null;
@@ -46,15 +47,17 @@ public class AuthService {
         if(passwordEncoder.matches(credentials.getUser_password(), user.get().getUser_password())){
             List<GrantedAuthority> roles = new ArrayList<>();
             roles.add(new SimpleGrantedAuthority(user.get().getUser_role()));
-            return jwtProvider.createToken(user.get().getUser_name(), user.get().getUser_email(), roles);
+            TokenDto token = new TokenDto(jwtProvider.createToken(user.get().getUser_name(), user.get().getUser_email(), roles));
+            return token;
         }
         return null;
     }
 
-    public String validateToken(String token){
-        if(jwtProvider.validateToken(token)){
-            String userEmail = this.jwtProvider.getUserEmail(token);
+    public TokenDto validateToken(String stoken){
+        if(jwtProvider.validateToken(stoken)){
+            String userEmail = this.jwtProvider.getUserEmail(stoken);
             if(this.userFeign.findUserByEmail(userEmail).isPresent()){
+                TokenDto token = new TokenDto(stoken);
                 return token;
             }
             return null;
