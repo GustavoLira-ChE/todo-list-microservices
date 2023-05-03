@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -19,8 +20,22 @@ module.exports = {
                     loader: 'babel-loader'
                 },
             },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'html-loader'
+                    }
+                ]
+            },
         ]
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './public/index.html',
+            filename: './index.html'
+        })
+    ],
     devServer: {
         static: path.join(__dirname,'dist'),
         port: 3001,
