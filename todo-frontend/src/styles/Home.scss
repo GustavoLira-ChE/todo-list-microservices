@@ -1,0 +1,9 @@
+.height-home{
+    min-height: calc(100vh - 348px);
+    display: flex;
+    justify-content: center;
+    .col-items {
+        height: fit-content;
+        align-self: center;
+    }
+}
