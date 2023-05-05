@@ -1,0 +1,28 @@
+.navbar-container{
+    display: flex;
+    
+    .nav-items{
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+        .nav-item {
+            padding: 10px;
+        }
+    }
+    .navbar-mobile{
+        display: none;
+        position: relative;
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar-container{
+    
+        .navbar-desktop{
+            display: none;
+        }
+        .navbar-mobile{
+            display: block;
+        }
+    }
+}
