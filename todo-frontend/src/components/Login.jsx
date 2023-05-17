@@ -1,10 +1,18 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import "./../styles/Login.scss";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { startSession } from '../state/reducer/userSession.reducer';
+import UserTokenContext from '../context/UserTokenContext';
+
+
 
 const Login = () => {
 
+    const {token, getToken} = useContext(UserTokenContext);
     const loginForm = useRef(null);
+    const dispatch = useDispatch();
+    let navigate = useNavigate();
 
     const handleLoginFormValues = (event) => {
         event.preventDefault();
@@ -13,7 +21,13 @@ const Login = () => {
             email: formData.get("email"),
             password: formData.get("password")
         }
-        console.log(data);
+        getToken(data);
+        const userSessionInfo = {
+            email: data.email,
+            token: token
+        }
+        dispatch(startSession(userSessionInfo));
+        navigate("/");
     }
 
     return (
